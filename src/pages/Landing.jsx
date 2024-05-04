@@ -23,7 +23,7 @@ export function Landing(){
     }).catch((e)=>{
       console.log(e);
     })
-  }, []);
+  }, [username, profile]);
   return <div className="h-screen flex flex-col justify-center">
   <div className=" flex justify-center">
     <div role="status">

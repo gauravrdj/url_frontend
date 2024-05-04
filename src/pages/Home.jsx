@@ -1,8 +1,10 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 
 
 export function Home(){
     const [name, setName]=useState('');
+    const navigate=useNavigate();
     return (
         <div>
           <div className="min-h-screen bg-black text-white flex flex-col justify-center items-center">
@@ -20,7 +22,8 @@ export function Home(){
             <button 
               className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500" 
               onClick={() => {
-                window.location.href = `/${name}`;
+                // window.location.href = `/${name}`;
+                navigate(`/${name}`);
               }}
             >
               Get Started

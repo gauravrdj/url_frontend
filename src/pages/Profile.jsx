@@ -27,10 +27,10 @@ const InputPage = () => {
                 url:profileLink
              })
              if(res.data.status===200){
-                alert(`Your ${profile} profile is now accessible at /${username}/${profile}`);
+                alert(`Your ${profile} profile is now accessible at /iam/${username}/${profile}`);
              }
-        console.log("Profile:", profile);
-        console.log("Profile Link:", profileLink);
+        // console.log("Profile:", profile);
+        // console.log("Profile Link:", profileLink);
     };
 
     return (

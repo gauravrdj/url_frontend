@@ -6,14 +6,14 @@ import InputPage from './pages/Profile'
 import { Home } from './pages/Home'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
     <>
       <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/:username/:profile?' element={<Landing></Landing>}></Route>
+        <Route path='/iam/:username/:profile?' element={<Landing></Landing>}></Route>
         <Route path='/add/:username' element={<InputPage></InputPage>}></Route>
       </Routes>
       </BrowserRouter>

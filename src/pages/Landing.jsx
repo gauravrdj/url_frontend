@@ -16,6 +16,7 @@ export function Landing(){
         console.log(res.data.link);
         window.location.href=res.data.link;
         
+        
       }
       else if(res.data.status===404){
         navigate(`/add/${username}`);

@@ -19,8 +19,8 @@ export function Landing(){
         
       }
       else if(res.data.status===404){
-        navigate(`/add/${username}`);
-      }
+        navigate(`/add/${username}/${res.data.newUser}`);
+      } 
     }).catch((e)=>{
       console.log(e);
     })

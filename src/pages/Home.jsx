@@ -9,7 +9,7 @@ export function Home(){
         <div>
           <div className="min-h-screen bg-black text-white flex flex-col justify-center items-center">
             <h1 className="text-3xl font-bold mb-4">Welcome😊</h1>
-            <p className="text-lg mb-8">Go to /your_name and add your profile...</p>
+            <p className="text-lg mb-8">Go to <i className="text-blue-500">/your_name</i> and add your profile...</p>
             <h1>OR</h1>
             <input 
               type="text" 
@@ -23,7 +23,7 @@ export function Home(){
               className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500" 
               onClick={() => {
                 // window.location.href = `/${name}`;
-                navigate(`/iam/${name}`);
+                navigate(`/${name}`);
               }}
             >
               Get Started

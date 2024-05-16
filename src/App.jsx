@@ -12,8 +12,8 @@ function App() {
     <>
       <BrowserRouter>
       <Routes>
-      <Route path='/iam/:username/:profile?' element={<Landing></Landing>}></Route>
-        <Route path='/add/:username' element={<InputPage></InputPage>}></Route>
+      <Route path='/:username/:profile?' element={<Landing></Landing>}></Route>
+        <Route path='/add/:username/:newUser' element={<InputPage></InputPage>}></Route>
         <Route path='/' element={<Home></Home>}></Route>
         
       </Routes>

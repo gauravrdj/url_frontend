@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios'
 
 
+
 const InputPage = () => {
+    const navigate=useNavigate()
     const {username, newUser}=useParams();
     const [profile, setProfile] = useState('');
     const [profileLink, setProfileLink] = useState('');
@@ -33,6 +35,9 @@ const InputPage = () => {
                 // alert(`Your ${profile} profile is now accessible at /${username}/${profile}`);
                 setLive(`Your ${profile} profile is now live at /${username}/${profile} 🎉`);
              }
+             setTimeout(()=>{
+                navigate(`/${username}/${profile}`);
+             }, 3000);
         // console.log("Profile:", profile);
         // console.log("Profile Link:", profileLink);
     };
@@ -60,7 +65,7 @@ const InputPage = () => {
                             </div>)} */}
 
                             <div className={`mb-4 p-4 rounded-md ${newUser==='true' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}>
-                                {newUser==='true' ?  'It seems you are a new nser, thanks for visiting👍' : 'It seems you are already registered, keep adding new profiles😉'}
+                                {newUser==='true' ?  'It seems you are a new user, thanks for visiting👍' : 'It seems you are already registered, keep adding new profiles😉'}
                             </div>
 
                             

@@ -10,7 +10,7 @@ export function Landing(){
   const {username, profile}=useParams();
   
   useEffect(()=>{
-    axios.post('http://localhost:3000/api/v1/user', {
+    axios.post('https://url-backend-xzs6.onrender.com/api/v1/user', {
       name:username,
       profile:profile,
     }).then((res)=>{

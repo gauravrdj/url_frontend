@@ -37,7 +37,7 @@ const InputPage = () => {
         setPassword(inputPassword);
         let authenticated=false;
         if(newUser==='true'){
-            const pass=await axios.post('http://localhost:3000/api/v1/user/password' ,{
+            const pass=await axios.post('https://url-backend-xzs6.onrender.com/api/v1/user/password' ,{
                 username:username,
                 password:inputPassword
             })
@@ -46,7 +46,7 @@ const InputPage = () => {
             }
         }
         else{
-            const verified=await axios.post('http://localhost:3000/api/v1/user/verify', {
+            const verified=await axios.post('https://url-backend-xzs6.onrender.com/api/v1/user/verify', {
                 username:username,
                 password:inputPassword
             })
@@ -63,7 +63,7 @@ const InputPage = () => {
       
         // console.log(authenticated)
         if(authenticated){
-             const res=await axios.post('http://localhost:3000/profile', {
+             const res=await axios.post('https://url-backend-xzs6.onrender.com/profile', {
                 name:username,
                 profile:profile, 
                 url:profileLink

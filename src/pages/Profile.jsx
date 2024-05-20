@@ -128,7 +128,7 @@ const InputPage = () => {
                             <div className="mb-4">
                                 <label htmlFor="profileLink" className="block text-gray-300 font-semibold mb-2">Profile Link</label>
                                 <input 
-                                    type="text" 
+                                    type="url" 
                                     id="profileLink" 
                                     className={`w-full px-4 py-2 border rounded-md bg-gray-800 text-gray-100 focus:outline-none 
                                         ${isInputFocused ? 'border-blue-500' : 'border-gray-500'}`}

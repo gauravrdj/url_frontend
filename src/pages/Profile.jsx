@@ -4,12 +4,15 @@ import axios from 'axios'
 
 
 
+
 const InputPage = () => {
     const navigate=useNavigate()
     const {username, newUser}=useParams();
     const [profile, setProfile] = useState('');
     const [profileLink, setProfileLink] = useState('');
     const [live, setLive]=useState('');
+    // const [authenticated, setAuthenticated]=useState(false);
+    const [password, setPassword]=useState('');
     
 
 
@@ -25,8 +28,42 @@ const InputPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // let authenticated=false;
         // Handle form submission here
-             const res=await axios.post('https://url-backend-xzs6.onrender.com/profile', {
+        let message;
+        newUser==='true' ? message="Generate a Password, so that no other one can add profile in your account" : message="Enter the Password"
+        const inputPassword=prompt(message);
+        console.log(inputPassword);
+        setPassword(inputPassword);
+        let authenticated=false;
+        if(newUser==='true'){
+            const pass=await axios.post('http://localhost:3000/api/v1/user/password' ,{
+                username:username,
+                password:inputPassword
+            })
+            if(pass.data.status===200){
+                authenticated=true;
+            }
+        }
+        else{
+            const verified=await axios.post('http://localhost:3000/api/v1/user/verify', {
+                username:username,
+                password:inputPassword
+            })
+            // console.log(verified)
+            if(verified.data.status===200){
+                authenticated=true;
+            }
+            else{
+                alert('Authentication Failed❌')
+                navigate(`/add/${username}/${newUser}`);
+            }
+        }
+        
+      
+        // console.log(authenticated)
+        if(authenticated){
+             const res=await axios.post('http://localhost:3000/profile', {
                 name:username,
                 profile:profile, 
                 url:profileLink
@@ -36,8 +73,11 @@ const InputPage = () => {
                 setLive(`Your ${profile} profile is now live at /${username}/${profile} 🎉`);
              }
              setTimeout(()=>{
+                
                 navigate(`/${username}/${profile}`);
              }, 3000);
+            }
+            
         // console.log("Profile:", profile);
         // console.log("Profile Link:", profileLink);
     };
@@ -113,6 +153,8 @@ const InputPage = () => {
                         </form>
                     </div>
                 </div>
+                
+               
                 {/* Footer */}
                 <footer className="bg-gray-800 py-4 text-white text-center">
                     Made by Gaurav Sharma (NIT RKL)

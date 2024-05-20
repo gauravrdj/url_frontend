@@ -3,12 +3,14 @@ import { useNavigate, useParams } from "react-router-dom"
 import axios from 'axios'
 
 
+
 export function Landing(){
 
   const navigate =useNavigate();
   const {username, profile}=useParams();
+  
   useEffect(()=>{
-    axios.post('https://url-backend-xzs6.onrender.com/api/v1/user', {
+    axios.post('http://localhost:3000/api/v1/user', {
       name:username,
       profile:profile,
     }).then((res)=>{

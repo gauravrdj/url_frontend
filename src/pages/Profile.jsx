@@ -37,7 +37,7 @@ const InputPage = () => {
         setPassword(inputPassword);
         let authenticated=false;
         if(newUser==='true'){
-            if(inputPassword!=null){
+            if(inputPassword!=null && inputPassword!=""){
             const pass=await axios.post('https://url-backend-xzs6.onrender.com/api/v1/user/password' ,{
                 username:username,
                 password:inputPassword

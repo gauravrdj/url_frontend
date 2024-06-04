@@ -31,12 +31,13 @@ const InputPage = () => {
         // let authenticated=false;
         // Handle form submission here
         let message;
-        newUser==='true' ? message="Generate a Password, so that no other one can add profile in your account" : message="Enter the Password"
+        newUser==='true' ? message="Generate a Password, so that no one except you can add profile in your account" : message="Enter the Password"
         const inputPassword=prompt(message);
         console.log(inputPassword);
         setPassword(inputPassword);
         let authenticated=false;
         if(newUser==='true'){
+            if(inputPassword!=null){
             const pass=await axios.post('https://url-backend-xzs6.onrender.com/api/v1/user/password' ,{
                 username:username,
                 password:inputPassword
@@ -44,6 +45,11 @@ const InputPage = () => {
             if(pass.data.status===200){
                 authenticated=true;
             }
+        }
+        else{
+            alert('Password cannot be NULL❌')
+            navigate(`/add/${username}/${newUser}`);
+        }
         }
         else{
             const verified=await axios.post('https://url-backend-xzs6.onrender.com/api/v1/user/verify', {

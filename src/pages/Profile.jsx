@@ -110,8 +110,8 @@ const InputPage = () => {
                                 It seems You are already registered, keep adding new profiles😉
                             </div>)} */}
 
-                            <div className={`mb-4 p-4 rounded-md ${newUser==='true' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}>
-                                {newUser==='true' ?  'It seems you are a new user, thanks for visiting👍' : 'It seems you are already registered, keep adding new profiles😉'}
+                            <div className={`mb-4 p-4 rounded-md ${newUser==='true' ? 'bg-green-500 text-white' : 'bg-yellow-500 text-white'}`}>
+                                {newUser==='true' ?  'You have not added any profile yet 🤷‍♂️, please go ahead👍' : 'It seems you are already registered, keep adding new profiles😉'}
                             </div>
 
                             

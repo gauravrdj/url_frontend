@@ -30,7 +30,7 @@ export function Home(){
             </button>
           </div>
           <footer className="bg-gray-900 text-white text-center py-4">
-            <p>&copy; 2024 Gaurav Sharma. All rights reserved.</p>
+            <p>&copy; 2024 Vishal Chahal. All rights reserved.</p>
           </footer>
         </div>
       );

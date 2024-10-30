@@ -163,7 +163,7 @@ const InputPage = () => {
                
                 {/* Footer */}
                 <footer className="bg-gray-800 py-4 text-white text-center">
-                    Made by Vishal Chahal (NIT RKL)
+                    Made by Gaurav Sharma (NIT RKL)
                 </footer>
             </div>
         </div>

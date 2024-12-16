@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios'
 
 
@@ -163,7 +163,7 @@ const InputPage = () => {
                
                 {/* Footer */}
                 <footer className="bg-gray-800 py-4 text-white text-center">
-                    Made by Vishal Chahal (NIT RKL)
+                    Made by <Link to={"https://www.linkedin.com/in/gaurav-sharma-9556b2196/"}>Gaurav Sharma</Link> (NIT RKL)
                 </footer>
             </div>
         </div>

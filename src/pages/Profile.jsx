@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios'
+import { toast } from 'sonner';
 
 
 
@@ -32,7 +33,8 @@ const InputPage = () => {
         // Handle form submission here
         let message;
         newUser==='true' ? message="Generate a Password, so that no one except you can add profile in your account" : message="Enter the Password"
-        const inputPassword=prompt(message);
+        // const inputPassword=prompt(message);
+        const inputPassword = await askPassword();
         console.log(inputPassword);
         setPassword(inputPassword);
         let authenticated=false;
@@ -47,7 +49,8 @@ const InputPage = () => {
             }
         }
         else{
-            alert('Password cannot be NULL❌')
+            // alert('Password cannot be NULL❌')/
+            toast.error("Password cannot be NULL")
             navigate(`/add/${username}/${newUser}`);
         }
         }
@@ -61,7 +64,8 @@ const InputPage = () => {
                 authenticated=true;
             }
             else{
-                alert('Authentication Failed❌')
+                // alert('Authentication Failed❌')
+                toast.error("Authentication Failed")
                 navigate(`/add/${username}/${newUser}`);
             }
         }
@@ -76,7 +80,8 @@ const InputPage = () => {
              })
              if(res.data.status===200){
                 // alert(`Your ${profile} profile is now accessible at /${username}/${profile}`);
-                setLive(`Your ${profile} profile is now live at /${username}/${profile} 🎉`);
+                // setLive(`Your ${profile} profile is now live at /${username}/${profile} 🎉`);
+                toast.success(`Your ${profile} profile is now live at /${username}/${profile} 🎉`);
              }
              setTimeout(()=>{
                 
@@ -84,6 +89,48 @@ const InputPage = () => {
              }, 3000);
             }
             
+            function askPassword() {
+                return new Promise((resolve) => {
+                  let password = '';
+              
+                  toast((t) => (
+                    <div className="flex flex-col gap-4 p-2">
+                      <p className="text-lg font-semibold text-gray-800">
+                        🔐 Enter your password
+                      </p>
+                      <input
+                        type="password"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Password"
+                        autoFocus
+                        onChange={(e) => {
+                          password = e.target.value;
+                        }}
+                      />
+                      <div className="flex justify-end gap-3">
+                        <button
+                          className="px-4 py-2 rounded-lg bg-gray-300 hover:bg-gray-400 text-gray-800 transition"
+                          onClick={() => {
+                            toast.dismiss(t);
+                            resolve(null);
+                          }}
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold transition"
+                          onClick={() => {
+                            toast.dismiss(t);
+                            resolve(password);
+                          }}
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  ), { duration: Infinity });
+                });
+              }
         // console.log("Profile:", profile);
         // console.log("Profile Link:", profileLink);
     };
@@ -155,7 +202,7 @@ const InputPage = () => {
                            <br />
                            <br />
 
-                            {live.length===0 ? null : <div className={"mb-4 p-4 rounded-md  bg-green-500 text-white"}>{live}</div>}
+                            {/* {live.length===0 ? null : <div className={"mb-4 p-4 rounded-md  bg-green-500 text-white"}>{live}</div>} */}
                         </form>
                     </div>
                 </div>
